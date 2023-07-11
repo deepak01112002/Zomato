@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Order</h1>
+    <form action="{{ url_for('update_order', order_id=order.order_id) }}" method="POST">
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="received" {% if order.status == 'received' %}selected{% endif %}>Received</option>
+            <option value="preparing" {% if order.status == 'preparing' %}selected{% endif %}>Preparing</option>
+            <option value="ready for pickup" {% if order.status == 'ready for pickup' %}selected{% endif %}>Ready for Pickup</option>
+            <option value="delivered" {% if order.status == 'delivered' %}selected{% endif %}>Delivered</option>
+        </select>
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
