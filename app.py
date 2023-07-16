@@ -15,11 +15,8 @@ orders_list = [
     {"order_id": 2, "customer_name": "Jane Smith", "dish_ids": [3], "status": "preparing"}
 ]
 
-@app.route("/")
-def home():
-    return "Welcome to Zesty Zomato!"
 
-@app.route("/menu")
+@app.route("/")
 def menu():
     return render_template("menu.html", dishes=dishes)
 
